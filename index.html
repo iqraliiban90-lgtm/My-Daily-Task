@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="description" content="Plan your day, track your goals, and celebrate progress with My Daily Tasks.">
+  <title>My Daily Tasks — Version 1</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="app-sidebar">
+      <a class="brand" href="#home" aria-label="My Daily Tasks home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="m6.5 12.5 3.6 3.6 7.7-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>my daily <strong>tasks</strong></span>
+      </a>
+
+      <div class="sidebar-caption" data-i18n="sidebar.caption">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="nav.label">
+        <a class="nav-link active" href="#home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10 8.5-7 8.5 7v10a1 1 0 0 1-1 1h-5.2v-7h-4.6v7H4.5a1 1 0 0 1-1-1V10Z"/></svg>
+          <span data-i18n="nav.home">Home</span>
+        </a>
+        <a class="nav-link planner-nav" href="#goals">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h12M8 12h12M8 19h12M3.5 5h.01M3.5 12h.01M3.5 19h.01"/></svg>
+          <span data-i18n="nav.planner">My Tasks</span>
+        </a>
+        <a class="nav-link add-task-nav" href="#add-task">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span data-i18n="nav.add-task">Add New Task</span>
+        </a>
+        <a class="nav-link calendar-nav" href="#calendar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M7.5 3v4M16.5 3v4M3.5 9.5h17"/></svg>
+          <span data-i18n="nav.calendar">Calendar</span>
+        </a>
+        <a class="nav-link progress-nav" href="#progress">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-4 3 2 5-6"/></svg>
+          <span data-i18n="nav.progress">Progress</span>
+        </a>
+        <a class="nav-link settings-nav" href="#settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1a1.7 1.7 0 0 1-2.4 2.4l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a1.7 1.7 0 0 1-3.4 0v-.2a1.7 1.7 0 0 0-2.9-1.2l-.1.1a1.7 1.7 0 1 1-2.4-2.4l.1-.1a1.7 1.7 0 0 0-1.2-2.9H4a1.7 1.7 0 0 1 0-3.4h.2a1.7 1.7 0 0 0 1.2-2.9l-.1-.1a1.7 1.7 0 1 1 2.4-2.4l.1.1a1.7 1.7 0 0 0 2.9-1.2V2a1.7 1.7 0 0 1 3.4 0v.2a1.7 1.7 0 0 0 2.9 1.2l.1-.1a1.7 1.7 0 1 1 2.4 2.4l-.1.1a1.7 1.7 0 0 0 1.2 2.9h.2a1.7 1.7 0 0 1 0 3.4h-.2a1.7 1.7 0 0 0-1.2 2.9Z"/></svg>
+          <span data-i18n="nav.settings">Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-quote-mark" aria-hidden="true">✦</div>
+        <p data-i18n="footer.encouragement">Progress, not perfection. You're doing better than you think.</p>
+        <span>MY DAILY TASKS · V1</span>
+      </div>
+    </aside>
+
+    <div class="app-main">
+      <header class="site-header">
+        <div class="header-intro">
+          <span class="header-kicker" data-i18n="header.kicker">YOUR PERSONAL SPACE</span>
+          <strong data-i18n="hero.eyebrow">A FRESH START, EVERY DAY</strong>
+        </div>
+        <div class="header-actions">
+          <div class="today-chip">
+            <span class="calendar-icon" aria-hidden="true">▦</span>
+            <span id="today-date">Today</span>
+          </div>
+          <div class="language-settings" role="group" aria-labelledby="language-settings-label">
+            <span class="language-label" id="language-settings-label" data-i18n="language.label">Language Settings</span>
+            <button class="language-choice is-selected" type="button" data-language="en" aria-pressed="true" aria-label="English">
+              <span aria-hidden="true">🇬🇧</span>
+              <span class="language-name">English</span>
+              <span class="language-short" aria-hidden="true">EN</span>
+            </button>
+            <button class="language-choice" type="button" data-language="so" aria-pressed="false" aria-label="Somali">
+              <span aria-hidden="true">🇸🇴</span>
+              <span class="language-name">Somali</span>
+              <span class="language-short" aria-hidden="true">SO</span>
+            </button>
+          </div>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+            <span class="theme-label" data-i18n="theme.dark">Dark mode</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="page-shell">
+        <section class="welcome-card" id="home" aria-labelledby="welcome-title">
+          <div class="welcome-copy">
+            <span class="eyebrow"><span class="sparkle" aria-hidden="true">✦</span> <span data-i18n="hero.eyebrow">A FRESH START, EVERY DAY</span></span>
+            <h1 id="welcome-title"><span data-i18n="hero.title-first">Make today</span><br><span data-i18n="hero.title-second">count</span><span class="welcome-accent">.</span></h1>
+            <p data-i18n="hero.description">A little progress each day adds up to big things. Let's make yours a good one.</p>
+            <a class="welcome-button" href="#add-task"><span data-i18n="hero.button">Plan your day</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-sun"></div>
+            <div class="art-orbit orbit-one"></div>
+            <div class="art-orbit orbit-two"></div>
+            <div class="art-note">
+              <span class="note-check">✓</span>
+              <span><strong data-i18n="hero.art-title">You've got this</strong><small data-i18n="hero.art-subtitle">One thing at a time</small></span>
+            </div>
+            <div class="art-star star-one">✦</div>
+            <div class="art-star star-two">✧</div>
+          </div>
+          <div class="welcome-decoration" aria-hidden="true"></div>
+        </section>
+
+        <section class="dashboard" id="planner" aria-label="Daily planner" data-i18n-aria-label="planner.aria">
+          <div class="goals-column" id="goals">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow section-eyebrow" data-i18n="planner.eyebrow">DAILY PLANNER</span>
+                <h2><span data-i18n="planner.title">My goals</span> <span class="heading-sparkle" aria-hidden="true">✳</span></h2>
+              </div>
+              <span class="task-count" id="task-count">0 tasks</span>
+            </div>
+
+            <form class="add-task-form" id="add-task">
+              <label class="sr-only" for="task-input" data-i18n="task.input-label">What would you like to get done?</label>
+              <span class="input-plus" aria-hidden="true">+</span>
+              <input id="task-input" name="task" type="text" maxlength="100" placeholder="What would you like to get done?" data-i18n-placeholder="task.placeholder" autocomplete="off" required>
+              <button type="submit"><span data-i18n="task.create">Create New Task</span> <span aria-hidden="true">↗</span></button>
+            </form>
+
+            <div class="task-toolbar">
+              <p data-i18n="planner.encouragement">Keep it simple. You've got this.</p>
+              <label class="sr-only" for="task-filter" data-i18n="task.filter-label">Filter tasks</label>
+              <select id="task-filter" class="task-filter" aria-label="Filter tasks" data-i18n-aria-label="task.filter-label">
+                <option value="all" data-i18n="task.filter-all">All tasks</option>
+                <option value="active" data-i18n="task.filter-active">To do</option>
+                <option value="completed" data-i18n="task.filter-completed">Completed tasks</option>
+              </select>
+            </div>
+            <ul class="task-list" id="task-list" aria-live="polite"></ul>
+            <p class="empty-state" id="empty-state" hidden></p>
+          </div>
+
+          <aside class="side-column">
+            <section class="progress-card" id="progress" aria-labelledby="progress-title">
+              <div class="progress-card-top">
+                <span class="progress-label" data-i18n="progress.label">PROGRESS TRACKER</span>
+                <span class="progress-sparkle" aria-hidden="true">✦</span>
+              </div>
+              <div class="progress-content">
+                <div class="progress-ring" id="progress-ring" role="img" aria-label="0% of tasks completed">
+                  <div class="ring-inner">
+                    <strong id="progress-percent">0%</strong>
+                    <span data-i18n="progress.complete">complete</span>
+                  </div>
+                </div>
+                <div class="progress-message">
+                  <h2 id="progress-title"><span data-i18n="progress.title-first">Every step</span><br><span data-i18n="progress.title-second">counts.</span></h2>
+                  <p id="progress-summary">You've got a fresh page. Pick one thing and start there.</p>
+                </div>
+              </div>
+              <div class="progress-footer">
+                <span class="progress-dot" aria-hidden="true"></span>
+                <span id="progress-count">0 of 0 tasks done</span>
+              </div>
+            </section>
+
+            <section class="calendar-card" id="calendar" aria-labelledby="calendar-title">
+              <div class="widget-heading">
+                <div>
+                  <span class="eyebrow section-eyebrow" data-i18n="calendar.eyebrow">YOUR MONTH</span>
+                  <h3 id="calendar-title" data-i18n="nav.calendar">Calendar</h3>
+                </div>
+                <div class="calendar-controls">
+                  <button id="previous-month" type="button" aria-label="Previous month" data-i18n-aria-label="calendar.previous">‹</button>
+                  <button id="next-month" type="button" aria-label="Next month" data-i18n-aria-label="calendar.next">›</button>
+                </div>
+              </div>
+              <p class="calendar-month" id="calendar-month"></p>
+              <div class="calendar-grid calendar-weekdays" id="calendar-weekdays" aria-hidden="true"></div>
+              <div class="calendar-grid calendar-days" id="calendar-days" role="group" aria-label="Choose a calendar date" data-i18n-aria-label="calendar.choose"></div>
+              <p class="calendar-selected" id="calendar-selected" aria-live="polite"></p>
+            </section>
+
+            <section class="notes-card" aria-labelledby="notes-title">
+              <div class="widget-heading">
+                <div>
+                  <span class="eyebrow section-eyebrow" data-i18n="notes.eyebrow">SAVE A THOUGHT</span>
+                  <h3 id="notes-title" data-i18n="notes.title">Notes</h3>
+                </div>
+                <span class="notes-icon" aria-hidden="true">✎</span>
+              </div>
+              <label class="sr-only" for="notes-input" data-i18n="notes.label">Your notes</label>
+              <textarea id="notes-input" rows="4" maxlength="1000" placeholder="Jot down a thought, reminder, or idea..." data-i18n-placeholder="notes.placeholder"></textarea>
+              <p class="notes-status" id="notes-status" aria-live="polite" data-i18n="notes.saved">Saved on this device</p>
+            </section>
+          </aside>
+        </section>
+
+        <section class="settings-section" id="settings" aria-labelledby="settings-title">
+          <div class="settings-heading">
+            <div>
+              <span class="eyebrow section-eyebrow" data-i18n="settings.eyebrow">PERSONALIZE YOUR APP</span>
+              <h2 id="settings-title" data-i18n="nav.settings">Settings</h2>
+              <p data-i18n="settings.description">Choose how My Daily Tasks looks and feels on this device.</p>
+            </div>
+            <span class="settings-heading-icon" aria-hidden="true">⚙</span>
+          </div>
+          <div class="settings-grid">
+            <section class="setting-card" aria-labelledby="settings-language-title">
+              <div class="setting-card-copy">
+                <h3 id="settings-language-title" data-i18n="settings.language-title">Language</h3>
+                <p data-i18n="settings.language-description">Choose your preferred app language.</p>
+              </div>
+              <div class="language-settings settings-language" role="group" aria-labelledby="settings-language-title">
+                <button class="language-choice is-selected" type="button" data-language="en" aria-pressed="true" aria-label="English">
+                  <span aria-hidden="true">🇬🇧</span>
+                  <span class="language-name">English</span>
+                  <span class="language-short" aria-hidden="true">EN</span>
+                </button>
+                <button class="language-choice" type="button" data-language="so" aria-pressed="false" aria-label="Somali">
+                  <span aria-hidden="true">🇸🇴</span>
+                  <span class="language-name">Somali</span>
+                  <span class="language-short" aria-hidden="true">SO</span>
+                </button>
+              </div>
+            </section>
+            <section class="setting-card" aria-labelledby="settings-theme-title">
+              <div class="setting-card-copy">
+                <h3 id="settings-theme-title" data-i18n="settings.theme-title">Appearance</h3>
+                <p data-i18n="settings.theme-description">Switch between light and dark mode.</p>
+              </div>
+              <button class="theme-toggle settings-theme-toggle" id="settings-theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+                <span class="theme-icon" aria-hidden="true">☾</span>
+                <span class="theme-label" data-i18n="theme.dark">Dark mode</span>
+              </button>
+            </section>
+            <section class="setting-card storage-setting" aria-labelledby="settings-storage-title">
+              <span class="storage-icon" aria-hidden="true">✓</span>
+              <div class="setting-card-copy">
+                <h3 id="settings-storage-title" data-i18n="settings.storage-title">Your data stays on this device</h3>
+                <p id="storage-status" aria-live="polite" data-i18n="settings.storage-description">Tasks and preferences are saved in this browser.</p>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="about-section" id="about" aria-labelledby="about-title">
+          <span class="about-icon" aria-hidden="true">✦</span>
+          <div>
+            <span class="eyebrow section-eyebrow" data-i18n="about.eyebrow">A LITTLE ABOUT US</span>
+            <h2 id="about-title" data-i18n="about.title">A calmer way to get things done.</h2>
+            <p data-i18n="about.description">My Daily Tasks helps you make a simple plan, celebrate small wins, and keep your day moving at your own pace. Your tasks, notes, and preferences stay saved on this device.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-brand" href="#home">my daily <strong>tasks</strong></a>
+        <p data-i18n="about.title">A calmer way to get things done.</p>
+        <span><span data-i18n="footer.made-for">Made for your everyday</span> <span class="heart" aria-label="with love">♥</span></span>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
