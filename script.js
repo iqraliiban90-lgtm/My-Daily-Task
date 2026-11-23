@@ -5,7 +5,7 @@ const LANGUAGE_STORAGE_KEY = "my-daily-language";
 
 const translations = {
   en: {
-    "page.title": "My Daily Tasks — Version 1",
+    "page.title": "My Daily Tasks – Daily Productivity App",
     "nav.label": "Main navigation",
     "nav.home": "Home",
     "nav.planner": "My Tasks",
@@ -93,7 +93,7 @@ const translations = {
     "footer.made-for": "Made for your everyday"
   },
   so: {
-    "page.title": "My Daily Tasks — Nooca 1aad",
+    "page.title": "My Daily Tasks – Daily Productivity App",
     "nav.label": "Liiska hagidda",
     "nav.home": "Hoyga",
     "nav.planner": "Hawlahayga",
