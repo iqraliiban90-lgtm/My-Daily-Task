@@ -12,6 +12,7 @@ const translations = {
     "nav.add-task": "Add New Task",
     "nav.calendar": "Calendar",
     "nav.progress": "Progress",
+    "nav.about": "About",
     "nav.settings": "Settings",
     "language.label": "Language Settings",
     "sidebar.caption": "WORKSPACE",
@@ -99,6 +100,7 @@ const translations = {
     "nav.add-task": "Samee Hawl Cusub",
     "nav.calendar": "Jadwalka",
     "nav.progress": "Horumarkayga",
+    "nav.about": "Nagu saabsan",
     "nav.settings": "Dejimaha",
     "language.label": "Dejinta Luuqadda",
     "sidebar.caption": "GOOBTA SHAQADA",
@@ -355,10 +357,11 @@ function setTheme(theme) {
 
 function loadLanguage() {
   try {
-    return localStorage.getItem(LANGUAGE_STORAGE_KEY) === "so" ? "so" : "en";
+    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    return savedLanguage === "en" ? "en" : "so";
   } catch (error) {
     console.error("Could not load language preference:", error);
-    return "en";
+    return "so";
   }
 }
 
